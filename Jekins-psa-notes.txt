@@ -74,8 +74,7 @@ Specifies that the pipeline can run on any available Jenkins node (agent).
 If you want to run it on a specific node, you can use:
 
 groovy
-Copy
-Edit
+
 agent { label 'my-node' }
 3. stages {}
 A stage represents a logical step in the pipeline.
