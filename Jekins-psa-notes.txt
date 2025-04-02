@@ -1,3 +1,7 @@
+
+Poll SCM – Jenkins checks for changes at intervals.
+
+
 #################################
 Build and deployment process
 ##################################
