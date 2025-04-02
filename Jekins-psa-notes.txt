@@ -203,3 +203,38 @@ pipeline {
         }
     }
 }
+
+Example 2:
+_______________________
+pipeline {
+    agent any
+    
+    tools {
+        maven 'x-3.9.9'  
+    }
+
+    stages {
+        stage('git clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/pankajmutha14/docker-test.git'
+            }
+        }
+        stage('mvn') {
+            steps{
+                sh 'mvn clean test package'
+            }
+        }
+         stage('build image') {
+            steps{
+                sh 'docker build -t psait/test1 .'
+            }
+        }
+        stage('deployment'){
+            steps{
+                sh 'docker stop psait'
+                sh 'docker rm psait'
+                sh 'docker run -d -p 9090:8080 --name psait psait/test1'
+            }
+        }
+    }
+}
